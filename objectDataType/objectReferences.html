@@ -74,11 +74,23 @@
                             console.log(key)
                         }
 
-                    let clonedBabe = object.assign( {}, babes) // here we cloned (babes) object into clonedBabe.
+                     let clonedBabe = Object.assign({}, babes) // here we cloned (babes) object into clonedBabe.
 
 
-        ///// // for more complex cloning of NESTED PROPERTIES, we make use of the 
+        ///// // for more complex cloning of NESTED PROPERTIES, we make use of the    -- structedClone() -- method
 
+                        let mans = {
+                            name: "solo",
+                            sizes: {
+                                height: 5.8,
+                                width: 4.0
+                            } // example of nested properties. to clone this, you need to make use of structredClone() method
+                        }
+                    
+                    let newMans = structuredClone(mans);
+                    for (let key in newMans){
+                        console.log(newMans[key])
+                    }
 
 
 
