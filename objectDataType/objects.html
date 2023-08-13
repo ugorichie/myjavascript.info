@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+    <script> 
+        "use strict"
+
+// (1) ///////////---> OBJECTS AS non-primitve datatype
+            // There are two ways you can new object (datatype) for javascript
+                //let user = new Object() ---->> Object contructor
+                // let user = {   }  ---->> Object literal (this is widely used)
+                    let user = {
+                        name : "joke",
+                        age : 27,
+                    }
+                    user["complexion"] = "fair";
+
+                    //You can either "get" the values of the key using this two ways --Understood
+                    alert(user.complexion);
+                    alert(user["complexion"])
+                    alert(user.name)
+                    alert(user["age"])
+
+
+                    ///// let Reg = new Object(----> Object constructor method) --- Understood
+                    let Reg = new Object();
+                    Reg["name"] = "sodiq";
+                    Reg["age"] = 34;
+
+                    alert(Reg.age) // 34 
+
+                    let key = "name"
+                    alert(Reg[key]) // "sodiq"
+
+
+//(2) /////////// UNDERSTANDIN THE FLEXIBILITY OF CREATING OBJECT
+            let newUser = {
+                fname: "John",
+                status: "married",
+                kids: 4
+                    };
+
+                    let result = prompt("What do you want to know about the user?", "name / status / kids");
+
+                        // access by variable
+                    alert( newUser[result] ); // John (if enter "name")
+
+
+
+//(3) /////////////--- understanding COMPUTED PROPERTIES
+                let fruit = prompt("Which fruit to buy?", "apple");
+                let bag = {
+                    [fruit]:5 // this means "alert (bag.apple) will give 5" because apple was stored inside fuit
+                };
+
+                    alert(bag[fruit]);
+
+
+
+
+// (4) ///////////-----having a generic function with objects to use as class for creating other instances 
+                //(this function below is like a blue print) ----understood
+                function makeUser(name,age,height,status,color,religion){
+                return{
+                        name: name,
+                        age : age,
+                        status : status,
+                        height, // -- a shorthand way to write the above 3
+                        color,
+                        religion,
+                }
+                }
+
+                // (this is like a new house using the blue-print above) ---understod
+                let user1 = makeUser("ugonna", 28, "5'11ft", "single", "christianity");
+                alert(`the new user is ${user1.name} with height ${user1["height"]} with a status of ${user1["status"]}`)
+
+                // (this is like a new house using the blue-print above)
+                let user2 = makeUser("adaora", 20, "5'2ft", "married");
+                alert(`the new user is ${user2.name} and height ${user2["height"]} with a status of ${user2["status"]}`)
+
+
+
+
+//(5) //////////---- FOR..IN  loop, is used to output all the keys or values of properties within an object
+
+            // for (key in exUser)
+            let exUser = {
+                name: "solomon",
+                class: "doctorate",
+                course: "physics"
+            }
+            
+            for(key in exUser) {
+            alert (key); // name, class, course 
+
+            alert(exUser[key]); // "solomon", "doctorate", "physics"
+
+            }
+
+
+            // QUESTION 2--------Write the function isEmpty(obj) which returns true if the object has no properties, false otherwise.
+
+                function isEmpty(obj) {
+                for (let key in obj) {
+                    // if the loop has started, there is a property
+                    return false;
+                }
+                return true;
+                }
+
+                // alert(isEmpty(obj))
+
+
+            // QUESTION 3-----Write the code to sum all salaries and store in the variable sum. Should be 390 in the example above.
+
+                let salaries = {
+                    John: 100,
+                    Ann: 160,
+                    Pete: 130
+                    }
+                
+                let i = 0
+
+                for (let key in salaries){
+                    i += salaries[key]
+                }
+                alert(i)
+
+
+        // QUESTION 4--------Create a function multiplyNumeric(obj) that multiplies all numeric property values of obj by 2.
+                //ALWAYS REMEBER THAT YOU CAN USE A VARIABLE AS THE ARGUMENT WHEN CALLING A FUNCTION-- means you can declare and assign the variable first before writing the function below
+                let menu = {
+                    width: 200,
+                    height: 300,
+                    title: "My menu"
+                    };
+                
+                
+                let multiplyNum = (obj) =>{
+                    for (let key in obj){
+                        if(typeof(obj[key] === "number")){
+                            obj[key] *= 2;
+                        }
+                    }
+                    
+                }
+
+                console.log (multiplyNum(menu))
+
+        </script>
+</body>
+</html>

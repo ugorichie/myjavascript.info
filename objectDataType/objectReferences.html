@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object references and copying</title>
+</head>
+<body>
+    
+
+    <script>
+        "use strict";
+
+/////////// Object references and copying
+        // Object datatype is different from primitive datatype (string, number,boolean) in that they (object) can copy and store values and references
+        //btu primitive datatypes can only copy values 
+        //EXPLAIN
+
+                    // Primitve datatype
+                    let man = "adam"
+                    let human = man
+                    alert(human) // "adam" ---meaning (man) was only copied into (human)
+
+                    // Object datatype
+                    let woman = new Object()
+                        woman["name"]= "eve"
+                        woman["nature"]= "fragile"
+                    
+                    let humans = woman
+                    for(let key in woman){
+                    alert(key + " : " + woman[key])
+                    }// "eve" - "fragile" //this means both the variable and references (name/eve and nature/fragile) were copied and stored respectively
+
+
+                    let user = { name: 'John' };
+                    let admin = user;
+                    admin.name = 'Pete'; // changed by the "admin" reference
+                    alert(user.name);
+
+
+/////////// Comparasm by reference
+                    let a = {};
+                    let b = a; // copy the reference
+
+                    alert( a == b ); // true, both variables reference the same object
+                    alert( a === b ); // true
+
+
+//////////// Cloning objects (transferring properties from one object to another)
+                    let moat = {
+                        name : "moat",
+                        age : 7,
+                        motto : "jesus is lord"
+                    }
+
+                    let clone = new Object();
+
+                    for (let key in moat){
+                        clone[key] = moat[key] //by doing this we have created/transferred all the properties of MOAT to CLONE
+                    }
+
+                    // now we can choose to re-name / reassign values to CLONE but still maintaining the property name
+                    clone["name"] = "decagon"
+                    clone["motto"] = "lets do it"
+
+
+            ///// for cloning an object you can still use a javascript method called (assign)
+                    let babes = new Object();
+                        babes["class"] = "high"
+                        babes["hair"]= "blonde"
+
+                        Object.assign(babes, {hair: " "}, {height: 5.7}) //here we assigned more key:values to object babes
+                        for(let key in babes){
+                            console.log(key)
+                        }
+
+                    let clonedBabe = object.assign( {}, babes) // here we cloned (babes) object into clonedBabe.
+
+
+        ///// // for more complex cloning of NESTED PROPERTIES, we make use of the 
+
+
+
+
+
+        
+     </script>
+</body>
+</html>
